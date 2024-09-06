@@ -1,0 +1,19 @@
+<nav>
+    <ul>
+        <li>
+            <button type="button" [routerLink]="['/components/home']">Home</button>
+        </li>
+        <li>
+            <button type="button" [routerLink]="['/components/contact']">Contact</button>
+        </li>
+        <li>
+            <button type="button" [routerLink]="['/components/about']">About</button>
+        </li>
+        <li>
+            <button *ngIf="!isLoggedIn" type="button" [routerLink]="['/components/login']">Login</button>
+            <button *ngIf="isLoggedIn" type="button" (click)="logout()">Logout</button>
+        </li>
+    </ul>
+</nav>
+
+<router-outlet></router-outlet>

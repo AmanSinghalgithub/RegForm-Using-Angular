@@ -1,0 +1,192 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <table class="example-full-width" cellspacing="0">
+    <tr>
+      <td>
+    
+        <mat-form-field class="example-full-width">
+          <mat-label>First name</mat-label>
+          <input type="firstName" matInput formControlName="firstName" minlength="2" maxlength="10"
+            placeholder="Ex. Joy">
+          <mat-hint align="end">{{form.get('firstName')?.value.length}}</mat-hint>
+          <mat-error *ngIf="form.get('firstName')?.hasError('required')">
+            First name is <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="form.get('firstName')?.hasError('minlength')">
+            FirstName at least 2 characters long
+          </mat-error>
+          <mat-error *ngIf="form.get('firstName')?.hasError('maxlength')">
+            Firstname cannot exceed 20 characters long
+          </mat-error>
+          <mat-error *ngIf="form.get('firstName')?.hasError('pattern')">
+            Name Must be in characters
+          </mat-error>
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="example-full-width">
+          <mat-label>Middle name</mat-label>
+          <input matInput formControlName="middleName">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="example-full-width">
+          <mat-label>Last name</mat-label>
+          <input matInput formControlName="lastName" minlength="2" maxlength="10" placeholder="Ex. Singhal">
+          <mat-hint align="end">{{form.get('Name')?.value.length}}</mat-hint>
+          <mat-error *ngIf="form.get('lastName')?.hasError('required')">
+            Last name is <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="form.get('lastName')?.hasError('minlength')">
+            lastName at least 2 characters long
+          </mat-error>
+          <mat-error *ngIf="form.get('lastName')?.hasError('maxlength')">
+            lastname cannot exceed 20 characters long
+          </mat-error>
+          <mat-error *ngIf="form.get('lastName')?.hasError('pattern')">
+            Name Must be in characters
+          </mat-error>
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+
+  <p>
+    <mat-form-field class="example-full-width">
+      <mat-label>Email</mat-label>
+      <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com">
+      <mat-error *ngIf="form.get('email')?.hasError('email')">
+        Please enter a valid email address
+      </mat-error>
+      <mat-error *ngIf="form.get('email')?.hasError('required')">
+        Email is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  </p>
+
+  <div class="example-container">
+    <mat-form-field appearance="fill">
+      <mat-label>Enter your password</mat-label>
+      <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password" minlength="10" maxlength="20">
+      <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hidePassword">
+        <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+      <mat-error *ngIf="form.get('password')?.hasError('required')">
+        Password is <strong>required</strong>
+      </mat-error>
+      <mat-error *ngIf="form.get('password')?.hasError('minlength')">
+        Password must be at least 10 characters long
+      </mat-error>
+      <mat-error *ngIf="form.get('password')?.hasError('maxlength')">
+        Password cannot exceed 20 characters
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Confirm password</mat-label>
+      <input matInput [type]="hideConfirmPassword ? 'password' : 'text'" formControlName="confirmPassword" minlength="10"
+        maxlength="20">
+      <button mat-icon-button matSuffix (click)="hideConfirmPassword = !hideConfirmPassword" [attr.aria-label]="'Hide confirm password'"
+        [attr.aria-pressed]="hideConfirmPassword">
+        <mat-icon>{{hideConfirmPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+
+      <mat-error *ngIf="form.get('confirmPassword')?.hasError('required')">
+        Confirm password is <strong>required</strong>
+      </mat-error>
+      <mat-error *ngIf="form.get('confirmPassword')?.hasError('minlength')">
+        Confirm password must be at least 10 characters 
+      </mat-error>
+      <mat-error *ngIf="form.get('confirmPassword')?.hasError('maxlength')">
+        Confirm password cannot exceed 20 characters
+      </mat-error>
+      <span *ngIf="form.errors?.['mismatch']"><mat-error>
+          Passwords does not match
+        </mat-error></span>
+
+    </mat-form-field>
+  </div>
+
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Gender</mat-label>
+      <mat-select formControlName="gender" disableRipple>
+        <mat-option value="1">Male</mat-option>
+        <mat-option value="2">Female</mat-option>
+        <mat-option value="3">Other</mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.get('gender')?.hasError('required')">
+        Gender is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field class="example-full-width">
+      <mat-label>Address</mat-label>
+      <textarea matInput formControlName="address" placeholder="Ex. 100 Main St"></textarea>
+    </mat-form-field>
+  </p>
+
+  <table class="example-full-width" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field class="example-full-width">
+          <mat-label>City</mat-label>
+          <input matInput formControlName="city" minlength="4" maxlength="15" placeholder="Ex. San Francisco">
+          <mat-error *ngIf="form.get('city')?.hasError('required')">
+            City name is <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="form.get('city')?.hasError('minlength')">
+            City at least 4 characters long
+          </mat-error>
+          <mat-error *ngIf="form.get('city')?.hasError('maxlength')">
+            City cannot exceed 15 characters long
+          </mat-error>
+          <mat-error *ngIf="form.get('city')?.hasError('pattern')">
+            City Must be in characters
+          </mat-error>
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="example-full-width">
+          <mat-label>State</mat-label>
+          <input matInput formControlName="state" minlength="4" maxlength="15" placeholder="Ex. California">
+          <mat-error *ngIf="form.get('state')?.hasError('required')">
+            State name is <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="form.get('state')?.hasError('minlength')">
+            State at least 4 characters long
+          </mat-error>
+          <mat-error *ngIf="form.get('state')?.hasError('maxlength')">
+            State cannot exceed 15 characters long
+          </mat-error>
+
+          <mat-error *ngIf="form.get('state')?.hasError('pattern')">
+            State Must be in characters
+          </mat-error>
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="example-full-width">
+          <mat-label>PinCode</mat-label>
+          <input matInput formControlName="postalCode" maxlength="6" placeholder="Ex. 94105">
+          <mat-hint align="end">{{form.get('postalCode')?.value.length}} / 6</mat-hint>
+          <mat-error *ngIf="form.get('postalCode')?.hasError('required')">
+            Postal code is <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="form.get('postalCode')?.hasError('pattern')">
+            Postal code must be 6 digits
+          </mat-error>
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+
+  <div class="button-container">
+    <button mat-raised-button type="submit" [disabled]="form.invalid">Submit</button>
+    <p class="small fw-bold mt-2 pt-1 mb-0">Already have an account? <a routerLink="/login"
+      >Login</a></p>
+    </div>
+</form>
+

@@ -1,0 +1,36 @@
+
+nav {
+    background-color: #e9efea;
+    padding: 10px;
+}
+
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around; 
+}
+
+
+nav li {
+    margin: 0;
+}
+
+
+nav button {
+    background-color: #222123;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+nav button:hover {
+    background-color: #bcc2bf; 
+}

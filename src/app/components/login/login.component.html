@@ -1,0 +1,59 @@
+<section class="vh-100 " >
+  <div class="container-fluid ">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-md-9 col-lg-6 col-xl-5">
+              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+                  class="img-fluid" alt="Sample image">
+          </div>
+
+
+<form [formGroup]="login" (ngSubmit)="onSubmit()">
+  <mat-form-field class="example-full-width">
+    <mat-label>Email</mat-label>
+    <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com">
+    <mat-error *ngIf="login.get('email')?.hasError('email') && !login.get('email')?.hasError('required')">
+      Please enter a valid email address
+    </mat-error>
+    <mat-error *ngIf="login.get('email')?.hasError('required')">
+      Email is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+  
+
+
+  <div class="example-container">
+    <mat-form-field appearance="fill">
+      <mat-label>Enter your password</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" minlength="10" maxlength="20">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide'"
+        [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+      <mat-error *ngIf="login.get('password')?.hasError('required')">
+        Password is <strong>required</strong>
+      </mat-error>
+      <mat-error *ngIf="login.get('password')?.hasError('minlength')">
+        Password must be at least 10 characters long
+      </mat-error>
+      <mat-error *ngIf="login.get('password')?.hasError('maxlength')">
+        Password cannot exceed 20 characters
+      </mat-error>
+    </mat-form-field>
+    </div>
+
+    <div class="button-container">
+      <button mat-raised-button type="login" [disabled]="login.invalid">login Here</button>
+      
+      <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a routerLink="/regForm">Register</a></p>
+</div>
+   
+    
+    </form>
+
+    </div>
+    </div>
+
+    
+
+    
+  </section>
